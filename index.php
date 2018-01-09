@@ -29,9 +29,19 @@ $usuarios = $sql->select("SELECT * FROM tb_usuarios");
 echo json_encode($usuarios);
 */	
 
-//Carrega um usuário usando login e senha
+/*Carrega um usuário usando login e senha
 $usuario = new Usuario();
 $usuario->login("root", "!@#$");
 
-echo $usuario;
+echo $usuario;*/
+
+$aluno = new Usuario();
+
+$aluno->setDeslogin("aluno");
+$aluno->setDessenha("@lun0");
+
+$aluno->insert();
+
+echo $aluno;
+
 ?>
