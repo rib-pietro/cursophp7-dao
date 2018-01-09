@@ -35,6 +35,8 @@ $usuario->login("root", "!@#$");
 
 echo $usuario;*/
 
+/*Criando um novo usuário
+
 $aluno = new Usuario();
 
 $aluno->setDeslogin("aluno");
@@ -43,5 +45,13 @@ $aluno->setDessenha("@lun0");
 $aluno->insert();
 
 echo $aluno;
+*/
 
+$usuario = new Usuario();
+
+$usuario->loadById(17);
+
+$usuario->update("professor", "!@#$");
+
+echo $usuario;
 ?>

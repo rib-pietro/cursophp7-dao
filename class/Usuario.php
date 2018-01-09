@@ -42,11 +42,11 @@ class Usuario {
 	public function loadById($id){
 		$sql = new SQL; //cria conexão com o banco através da classe SQL
 
-		$result = $sql->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array(
+		$results = $sql->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array(
 			":ID"=>$id
 		)); // usa o método de seleção da classe SQL para executar a querie
 
-		if(count($result) > 0) { //verifica se houve retorno na seleção
+		if(count($results) > 0) { //verifica se houve retorno na seleção
 
 			$this->setData($results[0]);
 			
@@ -109,6 +109,25 @@ class Usuario {
 			':PASSWORD'=>$this->getDessenha()
 		));
 
+		if(count($results) > 0){
+			$this->setData($results[0]);
+		}
+		
+	}
+
+	public function update($login, $password){
+
+		$this->setDeslogin($login);
+		$this->setDessenha($password);
+
+
+		$sql = new Sql();
+
+		$sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD, idusuario = :ID", array(
+			':LOGIN'=>$this->getDeslogin(),
+			':PASSWORD'=>$this->getDessenha(),
+			':ID'=>$this->getIdusuario()
+		));
 	}
 
 	public function __toString(){
