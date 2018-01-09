@@ -10,19 +10,19 @@ class Sql extends PDO {
 
 	}
 
-	private function setParams($statment, $parameters = array()){
+	private function setParams($statement, $parameters = array()){
 
 		foreach ($parameters as $key => $value) {
 			
-			$this->setParam($key, $value); //seta os valores de cada campo da tabela através do seu identificador qúe é a chave(key) do array em que estão os parâmetros recebido por parâmetro
+			$this->setParam($statement, $key, $value); //seta os valores de cada campo da tabela através do seu identificador qúe é a chave(key) do array em que estão os parâmetros recebido por parâmetro
 
 		}
 
 	}
 
-	private function setParam($statment, $key, $value){ //redefine o bindParam, faz a mesma coisa, no entanto, facilita a conexão por já receber o $statment como parâmetro, isto é, a variável em que a queria foi realizada
+	private function setParam($statement, $key, $value){ //redefine o bindParam, faz a mesma coisa, no entanto, facilita a conexão por já receber o $statement como parâmetro, isto é, a variável em que a queria foi realizada
 
-		$statment->bindParam($key, $value); 
+		$statement->bindParam($key, $value); 
 
 	}
 
